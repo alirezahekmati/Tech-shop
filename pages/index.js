@@ -34,6 +34,33 @@ export default function Home() {
           layout="responsive"
         />
       </Paper>
+      <br />
+      <Divider />
+      <br />
+      <Paper variant="elevation" elevation={15}>
+        <Image
+          alt="photo of a laptop"
+          src={"/keyboard.webp"}
+          width={970}
+          height={647}
+          layout="responsive"
+        />
+      </Paper>
+      <br />
+      <Divider />
+      <br />
+      <Paper variant="elevation" elevation={15}>
+        <Image
+          alt="photo of a gaming pc"
+          src={"/pc.jpg"}
+          width={640}
+          height={480}
+          layout="responsive"
+        />
+      </Paper>
+      <br />
+      <Divider />
+      <br />
     </>
   );
 }

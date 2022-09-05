@@ -1,19 +1,38 @@
-import { Button, Paper } from "@mui/material";
+import { Button, Divider, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
 import NextLink from "next/link";
 
 export default function Home() {
   return (
     <>
-      <Typography variant="h4"> Home page</Typography>
-      <Paper variant="elevation" elevation={20}>
-        <Typography>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book.
+      <br />
+      <Divider />
+      <br />
+      <Paper variant="elevation" elevation={15}>
+        <Typography variant="h4" gutterBottom>
+          Incredible Prices on All Your Favorite Items
         </Typography>
-        <Button variant="contained">buy</Button>
+
+        <Typography variant="body2">
+          Get more for less on selected brands
+        </Typography>
+        <Button variant="contained" color="secondary">
+          Shop now
+        </Button>
+      </Paper>
+      <br />
+      <Divider />
+      <br />
+
+      <Paper variant="elevation" elevation={15}>
+        <Image
+          alt="photo of a laptop"
+          src={"/laptop.jpg"}
+          width={970}
+          height={647}
+          layout="responsive"
+        />
       </Paper>
     </>
   );

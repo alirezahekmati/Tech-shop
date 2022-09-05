@@ -1,0 +1,75 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
+}
+:root {
+  --clr-white:hsla(0, 0%, 100%,1);
+  --clr-black:hsla(0, 0%, 0%, 1);
+  --clr-accent: hsla(170,82%,48%,1);
+  
+
+  --fs-responsive-1000: 1.2rem;
+  --fs-responsive-800: 1rem;
+  --fs-responsive-500: .9rem;
+  --fs-responsive-300: .8rem;
+
+}
+* {
+  box-sizing: border-box;
+  /* border: 1px dotted hsl(0, 99%, 49%); */
+}
+a{
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 200ms;
+}
+a:hover,a:focus{
+transform: scale(1.1);
+}
+:focus {
+  outline: 1px solid hsla(0,0%,90%,.4);
+  outline-offset: 3px;
+}
+
+
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+#root, #__next {
+  isolation: isolate;
+}
+p{
+  max-width: 700px;
+  line-height: 1.4;
+  
+  letter-spacing: 1px;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
+
+
+/* material ui  */
+.MuiPaper-root{
+  padding: 1em;
+}

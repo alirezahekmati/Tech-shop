@@ -14,13 +14,7 @@ const caruselArray = [
 
 export default function EmblaCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
 
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
   return (
     <div className="embla" ref={emblaRef}>
       <div className="embla__container">
@@ -59,24 +53,6 @@ export default function EmblaCarousel() {
           />
         </Paper>
       </div>
-      <IconButton
-        className="embla__next"
-        size="large"
-        color="inherit"
-        aria-label="next"
-        onClick={scrollNext}
-      >
-        <ArrowForwardIosIcon />
-      </IconButton>
-      <IconButton
-        className="embla__prev"
-        size="large"
-        color="inherit"
-        aria-label="next"
-        onClick={scrollPrev}
-      >
-        <ArrowBackIosIcon />
-      </IconButton>
     </div>
   );
 }

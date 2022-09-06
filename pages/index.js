@@ -36,6 +36,7 @@ export default function Home() {
       <br />
       <Box sx={{ position: "relative" }}>
         <Image
+          priority
           alt="photo of a laptop"
           src={"/iphone.webp"}
           width={320}
@@ -66,6 +67,7 @@ export default function Home() {
 
       <Box sx={{ position: "relative" }}>
         <Image
+          priority
           alt="photo of a gaming pc"
           src={"/headphone.webp"}
           width={320}

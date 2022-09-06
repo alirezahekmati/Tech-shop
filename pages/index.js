@@ -95,7 +95,11 @@ export default function Home() {
       <Divider />
       <br />
 
-      <Grid container>
+      <Grid
+        container
+        spacing={1}
+        sx={{ justifyContent: "center", alignItems: "center" }}
+      >
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Paper variant="outlined">
             <ViewInArIcon sx={{ fontSize: "350%" }} color="secondary" />

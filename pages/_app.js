@@ -56,7 +56,6 @@ function MyApp({ Component, pageProps }) {
   const is900px = useMediaQuery("(min-width: 900px)");
   const isDarkQuery = useMediaQuery("(prefers-color-scheme: 'dark')");
   const [isDark, setIsDark] = useState(isDarkQuery);
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
 
   const data = [
     {
@@ -160,17 +159,9 @@ function MyApp({ Component, pageProps }) {
             <IconButton
               size="large"
               color="inherit"
-              onClick={() => setIsMusicPlaying((e) => !e)}
-              aria-label="music player"
-              sx={{ ml: "auto" }}
-            >
-              {isMusicPlaying ? <AudiotrackIcon /> : <MusicOffIcon />}
-            </IconButton>
-            <IconButton
-              size="large"
-              color="inherit"
               onClick={() => setIsDark((e) => !e)}
               aria-label="dark-mode"
+              sx={{ ml: "auto" }}
             >
               {isDark ? (
                 <LightModeIcon />

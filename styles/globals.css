@@ -73,3 +73,34 @@ p{
 .MuiPaper-root{
   padding: 1em;
 }
+.paper_carousle{
+  /* padding: 3em; */
+}
+
+
+.embla {
+  overflow: hidden;
+  position: relative;
+}
+.embla__container {
+  display: flex;
+  
+}
+.embla__slide {
+  flex: 0 0 100%;
+}
+.embla__next{
+position: absolute;
+top: 0%;
+right: 0%;
+height: 100%;
+}
+.embla__prev{
+ position: absolute;
+ top: 0%;
+ left: 0%; 
+ height: 100%;
+}
+img{
+  border-radius: 5px;
+}

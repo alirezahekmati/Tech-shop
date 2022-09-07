@@ -35,6 +35,13 @@ import MusicOffIcon from "@mui/icons-material/MusicOff";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
+import ComputerIcon from "@mui/icons-material/Computer";
+import TabletMacIcon from "@mui/icons-material/TabletMac";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import HeadphonesIcon from "@mui/icons-material/Headphones";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import MoneyOffIcon from "@mui/icons-material/MoneyOff";
+import TvIcon from "@mui/icons-material/Tv";
 import { Box } from "@mui/system";
 import Router from "next/router";
 import {
@@ -64,24 +71,40 @@ function MyApp({ Component, pageProps }) {
       label: "Home",
     },
     {
-      pageLink: "/Blog",
-      Icon: <HistoryEduIcon />,
-      label: "Blog",
+      pageLink: "/Mobile",
+      Icon: <PhoneAndroidIcon />,
+      label: "Mobile",
+    },
+    {
+      pageLink: "/Pc",
+      Icon: <ComputerIcon />,
+      label: "Computers",
     },
     {
       pageLink: "/About",
-      Icon: <InfoIcon />,
-      label: "About",
+      Icon: <TabletMacIcon />,
+      label: "Tablets",
     },
     {
       pageLink: "/Contact",
-      Icon: <ContactPhoneIcon />,
-      label: "Contact",
+      Icon: <CameraAltIcon />,
+      label: "Drone & Camera",
     },
     {
       pageLink: "/Contact",
-      Icon: <ContactPhoneIcon />,
-      label: "Contact2",
+      Icon: <HeadphonesIcon />,
+      label: "Audio",
+    },
+
+    {
+      pageLink: "/Contact",
+      Icon: <TvIcon />,
+      label: "TV",
+    },
+    {
+      pageLink: "/Contact",
+      Icon: <MoneyOffIcon />,
+      label: "Sale",
     },
   ];
 

@@ -8,6 +8,13 @@ import EmblaCarousel from "../components/Carousel";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PriceCheckIcon from "@mui/icons-material/PriceCheck";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import Link from "next/link";
+
+const caruselArray = [
+  { URL: "/pc.jpg", width: 640, height: 480, title: "pc" },
+  { URL: "/keyboard.webp", width: 970, height: 647, title: "keyboard" },
+  { URL: "/laptop.jpg", width: 970, height: 647, title: "laptop" },
+];
 export default function Home() {
   return (
     <>
@@ -22,6 +29,7 @@ export default function Home() {
         <Typography variant="body2">
           Get more for less on selected brands
         </Typography>
+
         <Button variant="contained" color="secondary">
           Shop now
         </Button>
@@ -29,7 +37,7 @@ export default function Home() {
       <br />
       <Divider />
       <br />
-      <EmblaCarousel />
+      <EmblaCarousel propData={caruselArray} />
 
       <br />
       <Divider />
@@ -55,9 +63,11 @@ export default function Home() {
           <Typography variant="body2" gutterBottom>
             Selected Smartphone Brands
           </Typography>
-          <Button color="inherit" variant="outlined">
-            Shop
-          </Button>
+          <Link href={"/Mobile"}>
+            <Button color="inherit" variant="outlined">
+              Shop
+            </Button>
+          </Link>
         </Box>
       </Box>
 
@@ -86,9 +96,11 @@ export default function Home() {
           <Typography variant="body2" gutterBottom>
             Top Headphone Brands
           </Typography>
-          <Button color="inherit" variant="outlined">
-            Shop
-          </Button>
+          <Link href={"/Audio"}>
+            <Button color="inherit" variant="outlined">
+              Shop
+            </Button>
+          </Link>
         </Box>
       </Box>
       <br />

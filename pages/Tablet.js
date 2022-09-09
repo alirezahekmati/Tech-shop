@@ -1,15 +1,18 @@
 import {
-  Autocomplete,
   Button,
   Divider,
   Grid,
   Pagination,
   Paper,
+  Rating,
   Skeleton,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import Favorite from "@mui/icons-material/Favorite";
 import { Box } from "@mui/system";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +21,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import usePagination from "../lib/usePagination";
 import useSWR from "swr";
 
-const PAGE_SIZE = 10;
 export default function Mobile() {
   const [page, setPage] = useState(1);
   const [searchInput, setSearchInput] = useState("");
@@ -27,19 +29,17 @@ export default function Mobile() {
   const handleChange = (event, value) => {
     setPage(value);
   };
-  const URL = `http://localhost:1337/api/mobiles/?populate=*`;
+  const [checked, setChecked] = useState(false);
 
+  const handleChangeFav = (event) => {
+    setChecked((e) => !e);
+  };
+  const URL = `http://localhost:1337/api/tablets/?populate=*`;
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const earlyFetch = useSWR(URL, fetcher, {
-    refreshInterval: 5000,
-  });
-
-  const URL_pagination = `http://localhost:1337/api/mobiles?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&populate=*`;
   const { data, error, isValidating, mutate } = useSWR(URL, fetcher, {
     refreshInterval: 5000,
   });
 
-  // console.log(data);
   const pcArray = data ? (
     data.data
       .filter(
@@ -53,24 +53,35 @@ export default function Mobile() {
       .map((e, id) => (
         <Grid item xs={6} sm={3} md={2} key={id}>
           <Box>
-            <Link href={`/mobiles/${e.id}`}>
-              <Paper variant="elevation" elevation={20}>
+            <Paper variant="elevation" elevation={20}>
+              <Box sx={{ position: "relative" }}>
                 <Image
                   layout="responsive"
                   alt={e.attributes.title}
                   src={
                     "http://localhost:1337" +
-                    e.attributes.img.data.attributes.url
+                    e.attributes.img.data[0].attributes.url
                   }
-                  width={e.attributes.img.data.attributes.width}
-                  height={e.attributes.img.data.attributes.height}
+                  width={e.attributes.img.data[0].attributes.width}
+                  height={e.attributes.img.data[0].attributes.height}
                 />
-                <Typography>
-                  {e.attributes.title} ${e.attributes.price}
-                </Typography>
-                {/* description on its ownpage */}
-              </Paper>
-            </Link>
+                <Checkbox
+                  checked={checked}
+                  onChange={handleChangeFav}
+                  aria-label="favourite or not"
+                  icon={<FavoriteBorder color="error" />}
+                  checkedIcon={<Favorite color="error" />}
+                  sx={{ position: "absolute", top: "1%", right: "1%" }}
+                />
+              </Box>
+              <Typography>
+                {e.attributes.title} ${e.attributes.price}
+                <Rating name="rate" value={e.attributes.rate} readOnly />
+              </Typography>
+              <Link href={`/tablets/${e.id}`}>
+                <Typography>click to see more</Typography>
+              </Link>
+            </Paper>
             <br />
             <Divider />
             <br />
@@ -84,9 +95,8 @@ export default function Mobile() {
       <Skeleton width={"90vw"} height={"90vh"} />
     </>
   );
-  // console.log(
-  //   searchResult.length && searchResult.data.map((e) => e.attributes.title)
-  // );
+  console.log(data);
+  //   const pcArray = [1, 2, 1];
   const [filteredElemants, totalPage] = usePagination(pcArray, page, 10);
 
   return (
@@ -134,15 +144,6 @@ export default function Mobile() {
           }}
         />
       </Stack>
-      {/* <Autocomplete
-        disablePortal
-        options={
-          
-        }
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="seach .. " />}
-      /> */}
-      {/*  .filter(e=> e.title.tolowercase.includes(searchInput.tolowercase())) */}
       <Typography>search result for :{searchInput.toLowerCase()}</Typography>
       <br />
       <Divider />

@@ -29,33 +29,37 @@ export default function Mobile({}) {
       <br />
       <Divider />
       <br />
+      <Link href={`/Mobile`}>
+        <Button sx={{ margin: "1em" }}>Back to All mobiles</Button>
+      </Link>
       {data ? (
-        <Box>
-          <Link href="/Mobile">Back</Link>
-          <Image
-            layout="responsive"
-            alt={data.data.attributes.title}
-            src={
-              "http://localhost:1337" +
-              data.data.attributes.img.data.attributes.url
-            }
-            width={data.data.attributes.img.data.attributes.width}
-            height={data.data.attributes.img.data.attributes.height}
-          />
-          <Paper variant="elevation" elevation={20}>
-            <Typography variant="h4" gutterBottom>
-              {data.data.attributes.title}
-            </Typography>
-            <Typography variant="body2">
-              ${data.data.attributes.price}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {data.data.attributes.description}
-            </Typography>
-            <Button variant="contained" color="secondary">
-              add to cart
-            </Button>
-          </Paper>
+        <Box sx={{ margin: "auto", width: "100%" }}>
+          <Box sx={{ maxWidth: "400px", margin: "auto", padding: "2em" }}>
+            <Image
+              layout="responsive"
+              alt={data.data.attributes.title}
+              src={
+                "http://localhost:1337" +
+                data.data.attributes.img.data.attributes.url
+              }
+              width={data.data.attributes.img.data.attributes.width}
+              height={data.data.attributes.img.data.attributes.height}
+            />
+            <Paper variant="elevation" elevation={20}>
+              <Typography variant="h4" gutterBottom>
+                {data.data.attributes.title}
+              </Typography>
+              <Typography variant="body2">
+                ${data.data.attributes.price}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                {data.data.attributes.description}
+              </Typography>
+              <Button variant="contained" color="secondary">
+                add to cart
+              </Button>
+            </Paper>
+          </Box>
         </Box>
       ) : (
         <Box

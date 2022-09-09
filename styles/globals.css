@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: Roboto, Helvetica Neue, sans-serif;
   scroll-behavior: smooth;
+ 
 }
 :root {
   --clr-white:hsla(0, 0%, 100%,1);
@@ -103,4 +104,5 @@ height: 100%;
 }
 img{
   border-radius: 5px;
+ 
 }

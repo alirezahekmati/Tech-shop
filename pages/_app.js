@@ -1,15 +1,15 @@
 import "../styles/globals.css";
 import Head from "next/head";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
+
 import NextLink from "next/link";
 import styles from "../styles/Home.module.css";
 import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
@@ -19,22 +19,15 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+
 import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
-import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+
 import LightModeIcon from "@mui/icons-material/LightMode";
 import NightlightIcon from "@mui/icons-material/Nightlight";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import MusicOffIcon from "@mui/icons-material/MusicOff";
-import AudiotrackIcon from "@mui/icons-material/Audiotrack";
-import SearchIcon from "@mui/icons-material/Search";
-import TextField from "@mui/material/TextField";
+
 import ComputerIcon from "@mui/icons-material/Computer";
 import TabletMacIcon from "@mui/icons-material/TabletMac";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
@@ -43,12 +36,11 @@ import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import TvIcon from "@mui/icons-material/Tv";
 import { Box } from "@mui/system";
+import { Global, css } from "@emotion/react";
 import Router from "next/router";
 import {
   createTheme,
-  Grid,
   LinearProgress,
-  Slider,
   ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
@@ -81,7 +73,7 @@ function MyApp({ Component, pageProps }) {
       label: "Computers",
     },
     {
-      pageLink: "/About",
+      pageLink: "/Tablet",
       Icon: <TabletMacIcon />,
       label: "Tablets",
     },
@@ -132,6 +124,14 @@ function MyApp({ Component, pageProps }) {
   });
   return (
     <ThemeProvider theme={theme}>
+      <Global
+        styles={css`
+          body {
+            background-color: ${isDark ? "#2A272A" : "white"};
+            color: ${isDark ? "white" : "black"};
+          }
+        `}
+      />
       <div className={styles.App}>
         <Head>
           <title>Tech Shop</title>
@@ -211,27 +211,6 @@ function MyApp({ Component, pageProps }) {
           </Drawer>
         )}
         <Container maxWidth="xl">
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "stretch",
-              padding: "10px 15px",
-            }}
-          >
-            <input
-              placeholder="search..."
-              style={{
-                borderTopLeftRadius: "5px",
-                borderBottomLeftRadius: "5px",
-                border: "1px solid hsl(0,0%,70%)",
-              }}
-            />
-            <Button startIcon={<SearchIcon />} variant="contained">
-              Search
-            </Button>
-          </Box>
-
           <Box>
             <Component {...pageProps} />
           </Box>

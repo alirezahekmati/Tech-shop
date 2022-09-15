@@ -5,7 +5,7 @@ import { Grid, Paper, Skeleton } from "@mui/material";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-const strapiApiURL = "http://localhost:1337/api/texts";
+const strapiApiURL = "http://151.242.117.62:100/api/texts";
 const randomTextApiURL = "https://baconipsum.com/api/?type=meat-and-filler";
 const apiPlaceholderArray = new Array(5);
 export default function A() {

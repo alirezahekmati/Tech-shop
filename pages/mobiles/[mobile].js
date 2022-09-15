@@ -16,7 +16,7 @@ export default function Mobile({}) {
   const { mobile } = router.query;
   console.log(mobile);
 
-  const URL = `http://localhost:1337/api/mobiles/${mobile}/?populate=*`;
+  const URL = `http://151.242.117.62:100/api/mobiles/${mobile}/?populate=*`;
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data, error, isValidating, mutate } = useSWR(URL, fetcher, {
@@ -39,7 +39,7 @@ export default function Mobile({}) {
               layout="responsive"
               alt={data.data.attributes.title}
               src={
-                "http://localhost:1337" +
+                "http://151.242.117.62:100" +
                 data.data.attributes.img.data.attributes.url
               }
               width={data.data.attributes.img.data.attributes.width}

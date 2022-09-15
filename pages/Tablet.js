@@ -20,21 +20,26 @@ import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import usePagination from "../lib/usePagination";
 import useSWR from "swr";
-
+const dataArray = [
+  { value: false, id: 0 },
+  { value: false, id: 1 },
+];
 export default function Mobile() {
   const [page, setPage] = useState(1);
   const [searchInput, setSearchInput] = useState("");
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(9999);
+  const [checked, setChecked] = useState(dataArray);
   const handleChange = (event, value) => {
     setPage(value);
   };
-  const [checked, setChecked] = useState(false);
 
-  const handleChangeFav = (event) => {
-    setChecked((e) => !e);
+  const handleChangeFav = (id) => {
+    setChecked((preve) =>
+      preve.map((e) => (e.id === id ? { ...e, value: !e.value } : e))
+    );
   };
-  const URL = `http://localhost:1337/api/tablets/?populate=*`;
+  const URL = `http://151.242.117.62:100/api/tablets/?populate=*`;
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isValidating, mutate } = useSWR(URL, fetcher, {
     refreshInterval: 5000,
@@ -59,15 +64,19 @@ export default function Mobile() {
                   layout="responsive"
                   alt={e.attributes.title}
                   src={
-                    "http://localhost:1337" +
+                    "http://151.242.117.62:100" +
                     e.attributes.img.data[0].attributes.url
                   }
                   width={e.attributes.img.data[0].attributes.width}
                   height={e.attributes.img.data[0].attributes.height}
                 />
                 <Checkbox
-                  checked={checked}
-                  onChange={handleChangeFav}
+                  onChange={() => handleChangeFav(id)}
+                  checked={
+                    checked.find((e) => e.id === id)
+                      ? checked.find((e) => e.id === id).value
+                      : false
+                  }
                   aria-label="favourite or not"
                   icon={<FavoriteBorder color="error" />}
                   checkedIcon={<Favorite color="error" />}
@@ -95,40 +104,26 @@ export default function Mobile() {
       <Skeleton width={"90vw"} height={"90vh"} />
     </>
   );
-  console.log(data);
+  console.log(checked);
   //   const pcArray = [1, 2, 1];
   const [filteredElemants, totalPage] = usePagination(pcArray, page, 10);
 
   return (
     <div>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "stretch",
-          padding: "10px 15px",
-          cursor: "pointer",
+      <TextField
+        margin="normal"
+        fullWidth
+        type={"search"}
+        value={searchInput}
+        onChange={(e) => {
+          setSearchInput(e.currentTarget.value);
         }}
-      >
-        <input
-          value={searchInput}
-          onChange={(e) => {
-            setSearchInput(e.currentTarget.value);
-          }}
-          placeholder="search..."
-          style={{
-            borderTopLeftRadius: "5px",
-            borderBottomLeftRadius: "5px",
-            border: "1px solid hsl(0,0%,70%)",
-          }}
-        />
-        <Button startIcon={<SearchIcon />} variant="contained">
-          Search
-        </Button>
-      </Box>
+        placeholder="search..."
+      />
+
       <Stack spacing={1} direction="row">
         <TextField
-          label="highest-Price"
+          label="Lowest-Price"
           type={"number"}
           value={minPrice}
           onChange={(e) => {
@@ -136,7 +131,7 @@ export default function Mobile() {
           }}
         />
         <TextField
-          label="Lowest-Price"
+          label="highest-Price"
           type={"number"}
           value={maxPrice}
           onChange={(e) => {
@@ -160,9 +155,13 @@ export default function Mobile() {
           filteredElemants
         ) : (
           <>
-            <Typography align="center" variant="h4" component={"p"} m="1em">
+            <Skeleton width={"90vw"} height={"20vh"} />
+
+            <Typography align="center" variant="h4" component={"p"}>
               notting found!
             </Typography>
+            <Skeleton width={"90vw"} height={"30vh"} />
+            <Skeleton width={"90vw"} height={"10vh"} />
           </>
         )}
       </Grid>

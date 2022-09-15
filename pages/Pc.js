@@ -11,13 +11,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import useSWR from "swr";
-const URL = "http://localhost:1337/api/product-test2s/?populate=*";
+const URL = "http://151.242.117.62:100/api/product-test2s/?populate=*";
 export default function Mobile() {
   const [page, setPage] = useState(1);
   const handleChange = (event, value) => {
     setPage(value);
   };
-  const URL_pagination = `http://localhost:1337/api/product-test2s?pagination[page]=${page}&pagination[pageSize]=${10}&populate=*`;
+  const URL_pagination = `http://151.242.117.62:100/api/product-test2s?pagination[page]=${page}&pagination[pageSize]=${10}&populate=*`;
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -39,7 +39,8 @@ export default function Mobile() {
                 layout="responsive"
                 alt={e.attributes.title}
                 src={
-                  "http://localhost:1337" + e.attributes.img.data.attributes.url
+                  "http://151.242.117.62:100" +
+                  e.attributes.img.data.attributes.url
                 }
                 width={e.attributes.img.data.attributes.width}
                 height={e.attributes.img.data.attributes.height}

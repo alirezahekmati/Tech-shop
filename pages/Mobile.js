@@ -27,14 +27,14 @@ export default function Mobile() {
   const handleChange = (event, value) => {
     setPage(value);
   };
-  const URL = `http://localhost:1337/api/mobiles/?populate=*`;
+  const URL = `http://151.242.117.62:100/api/mobiles/?populate=*`;
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const earlyFetch = useSWR(URL, fetcher, {
     refreshInterval: 5000,
   });
 
-  const URL_pagination = `http://localhost:1337/api/mobiles?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&populate=*`;
+  const URL_pagination = `http://151.242.117.62:100/api/mobiles?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&populate=*`;
   const { data, error, isValidating, mutate } = useSWR(URL, fetcher, {
     refreshInterval: 5000,
   });
@@ -59,7 +59,7 @@ export default function Mobile() {
                   layout="responsive"
                   alt={e.attributes.title}
                   src={
-                    "http://localhost:1337" +
+                    "http://151.242.117.62:100" +
                     e.attributes.img.data.attributes.url
                   }
                   width={e.attributes.img.data.attributes.width}

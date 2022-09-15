@@ -43,7 +43,7 @@ export default function Tablet({}) {
   const handleChangeFav = (event) => {
     setChecked((e) => !e);
   };
-  const URL = `http://localhost:1337/api/tablets/${tablet}/?populate=*`;
+  const URL = `http://151.242.117.62:100/api/tablets/${tablet}/?populate=*`;
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data, error, isValidating, mutate } = useSWR(URL, fetcher, {
@@ -68,7 +68,7 @@ export default function Tablet({}) {
                   <Box>
                     <EmblaCarousel
                       propData={data.data.attributes.img.data.map((e) => ({
-                        URL: `http://localhost:1337${e.attributes.url}`,
+                        URL: `http://151.242.117.62:100${e.attributes.url}`,
                         width: e.attributes.width,
                         height: e.attributes.height,
                         title: data.data.attributes.title,
@@ -109,7 +109,7 @@ export default function Tablet({}) {
                     >
                       <EmblaCarousel
                         propData={data.data.attributes.img.data.map((e) => ({
-                          URL: `http://localhost:1337${e.attributes.url}`,
+                          URL: `http://151.242.117.62:100${e.attributes.url}`,
                           width: e.attributes.width,
                           height: e.attributes.height,
                           title: data.data.attributes.title,

@@ -17,7 +17,7 @@ export default function Pc({}) {
   const { pc } = router.query;
   console.log(pc);
 
-  const URL = `http://localhost:1337/api/product-test2s/${pc}/?populate=*`;
+  const URL = `http://151.242.117.62:100/api/product-test2s/${pc}/?populate=*`;
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data, error, isValidating, mutate } = useSWR(URL, fetcher, {
@@ -37,7 +37,7 @@ export default function Pc({}) {
             layout="responsive"
             alt={data.data.attributes.title}
             src={
-              "http://localhost:1337" +
+              "http://151.242.117.62:100" +
               data.data.attributes.img.data.attributes.url
             }
             width={data.data.attributes.img.data.attributes.width}
